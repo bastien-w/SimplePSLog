@@ -1,6 +1,7 @@
 . .\SimplePSLog.ps1
 
-Start-Log -LogName $($MyInvocation.MyCommand.Name.Split(".")[0] + ".csv")
+Start-Log -LogName $($MyInvocation.MyCommand.Name.Split(".")[0] + ".txt")
+#Start-Log -LogName $($MyInvocation.MyCommand.Name.Split(".")[0] + ".csv")
 
 New-log -Type Information -Message "Script is run by user : $env:USERNAME"
 New-log -Type Information -Message "The script running is : $($MyInvocation.MyCommand.Name)"

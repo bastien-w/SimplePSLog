@@ -22,49 +22,11 @@ function New-log
         $Type,
         $Message
     )
-    switch ($type)
-    {
-        'Error' {New-ErrorLog -Message $Message}
-        'Warning' {New-WarningLog -Message $Message}
-        'Information' {New-InformationLog -Message $Message}
-    }
-}
-
-function New-ErrorLog {
-    param (
-        $Message
-    )
     if (!($script:LogFullPath)) {
         Write-Host 'Run and configure the Start-Log command before generating logs'
         exit
     }
     $Timestamp = New-Timestamp
-    $Message = $Timestamp + "[Error] ; " +$Message
-    Add-Content -Value $Message -Path $script:LogFullPath
-}
-
-function New-WarningLog {
-    param (
-        $Message
-    )
-    if (!($script:LogFullPath)) {
-        Write-Host 'Run and configure the Start-Log command before generating logs'
-        exit
-    }
-    $Timestamp = New-Timestamp
-    $Message = $Timestamp + "[Warning] ; " +$Message
-    Add-Content -Value $Message -Path $script:LogFullPath
-}
-
-function New-InformationLog {
-    param (
-        $Message
-    )
-    if (!($script:LogFullPath)) {
-        Write-Host 'Run and configure the Start-Log command before generating logs'
-        exit
-    }
-    $Timestamp = New-Timestamp
-    $Message = $Timestamp + "[Information] ; " +$Message
+    $Message = $Timestamp + "["+$type+"] ; " +$Message
     Add-Content -Value $Message -Path $script:LogFullPath
 }
