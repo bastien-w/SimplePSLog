@@ -3,12 +3,11 @@ function Start-Log {
         $LogPath = "$env:ProgramData\Logs",
         $LogName = "SimplePSLog.txt"
     )
-    $LogFullPath = $LogPath + "\" + $LogName
-    Write-Host $LogFullPath
-    if (!(Test-Path $LogFullPath)) {
-        New-Item -Path $LogFullPath -Force         
+    $script:LogFullPath = $LogPath + "\" + $LogName
+    Write-Host $script:LogFullPath
+    if (!(Test-Path $script:LogFullPath)) {
+        New-Item -Path $script:LogFullPath -Force         
     }
-    $script:LogFullPath = $LogFullPath
 }
 
 function New-Timestamp {
