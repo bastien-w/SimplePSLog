@@ -1,7 +1,7 @@
 function Start-Log {
     param (
-        $LogPath = "$env:ProgramData\Logs",
-        $LogName = "SimplePSLog.txt"
+        [string]$LogPath = "$env:ProgramData\Logs",
+        [string]$LogName = "SimplePSLog.txt"
     )
     if ($LogPath[-1] -ne  "\") {
         $LogPath = $LogPath + "\"
@@ -24,7 +24,7 @@ function New-log
      param (
         [ValidateSet("Error","Warning","Information")]
         $Type,
-        $Message
+        [string]$Message
     )
     if (!($script:LogFullPath)) {
         Write-Host 'Run and configure the Start-Log command before generating logs'
