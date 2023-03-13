@@ -3,8 +3,13 @@ function Start-Log {
         $LogPath = "$env:ProgramData\Logs",
         $LogName = "SimplePSLog.txt"
     )
-    $script:LogFullPath = $LogPath + "\" + $LogName
+    if ($LogPath[-1] -ne  "\") {
+        $LogPath = $LogPath + "\"
+    }
+    $script:LogFullPath = $LogPath + $LogName
+
     Write-Host $script:LogFullPath
+    
     if (!(Test-Path $script:LogFullPath)) {
         New-Item -Path $script:LogFullPath -Force         
     }
