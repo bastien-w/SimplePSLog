@@ -27,7 +27,7 @@ function New-log
         [string]$Message
     )
     if (!($script:LogFullPath)) {
-        Write-Host 'Run and configure the Start-Log command before generating logs'
+        Write-Host 'Run the Start-Log command before generating logs'
         exit
     }
     $Timestamp = New-Timestamp
