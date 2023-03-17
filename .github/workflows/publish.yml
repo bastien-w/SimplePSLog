@@ -1,5 +1,5 @@
-- name: Publish module
-  uses: ramblingcookiemonster/publish-powershell-module@v0.0.2
-  with:
-    path: './SimplePSLog'
-    nugetApiKey: ${{ secrets.PS_GALLERY_KEY }}
+name: Publish module
+ uses: ramblingcookiemonster/publish-powershell-module@v0.0.2
+ with:
+   path: './SimplePSLog'
+   nugetApiKey: ${{ secrets.PS_GALLERY_KEY }}
