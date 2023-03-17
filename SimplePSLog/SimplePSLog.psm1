@@ -1,4 +1,5 @@
 function Start-Log {
+    [CmdletBinding(SupportsShouldProcess)]
     param (
         [string]$LogPath = "$env:ProgramData\Logs",
         [string]$LogName = "SimplePSLog.txt"
@@ -15,22 +16,24 @@ function Start-Log {
     }
 }
 
-function New-Timestamp {
+function Set-Timestamp {
+    param()
     return Get-Date -Format "dd/MM/yyyy ; HH:mm:ss ; "
 }
 
 function New-log
 {
+    [CmdletBinding(SupportsShouldProcess)]
      param (
         [ValidateSet("Error","Warning","Information")]
         $Type,
         [string]$Message
     )
     if (!($script:LogFullPath)) {
-        Write-Host 'Run the Start-Log command before generating logs'
+        Write-Information 'Run the Start-Log command before generating logs'
         exit
     }
-    $Timestamp = New-Timestamp
+    $Timestamp = Set-Timestamp
     $Message = $Timestamp + "["+$type+"] ; " +$Message
     Add-Content -Value $Message -Path $script:LogFullPath
 }
