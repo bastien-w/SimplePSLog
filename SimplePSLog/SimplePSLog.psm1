@@ -12,14 +12,14 @@ function Start-Log {
     Write-Verbose $script:LogFullPath
 
     if (!(Test-Path $script:LogFullPath)) {
-        New-Item -Path $script:LogFullPath -Force     
+        New-Item -Path $script:LogFullPath -Force
     }
 }
 
 function Set-Timestamp {
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess)]
     param()
-    return Get-Date -Format "dd/MM/yyyy ; HH:mm:ss ; "
+        return Get-Date -Format "dd/MM/yyyy ; HH:mm:ss ; "
 }
 
 function New-log
