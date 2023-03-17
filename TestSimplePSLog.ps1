@@ -1,4 +1,4 @@
-. .\SimplePSLog.ps1
+Import-Module .\SimplePSLog
 
 Start-Log -LogName $($MyInvocation.MyCommand.Name.Split(".")[0] + ".txt")
 #Start-Log -LogName $($MyInvocation.MyCommand.Name.Split(".")[0] + ".csv")

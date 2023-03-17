@@ -9,7 +9,7 @@ function Start-Log {
     }
     $script:LogFullPath = $LogPath + $LogName
 
-    Write-Host $script:LogFullPath
+    Write-Verbose $script:LogFullPath
     
     if (!(Test-Path $script:LogFullPath)) {
         New-Item -Path $script:LogFullPath -Force         
@@ -30,7 +30,7 @@ function New-log
         [string]$Message
     )
     if (!($script:LogFullPath)) {
-        Write-Information 'Run the Start-Log command before generating logs'
+        Write-Verbose 'Run the Start-Log command before generating logs'
         exit
     }
     $Timestamp = Set-Timestamp
