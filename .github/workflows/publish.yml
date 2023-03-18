@@ -1,8 +1,6 @@
 name: Publish PowerShell Module
 
 on:
-  push:
-    branches: [ "main" ]
   release:
     types: [created]
 
