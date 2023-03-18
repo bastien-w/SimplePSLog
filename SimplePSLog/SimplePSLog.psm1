@@ -8,7 +8,7 @@ function Start-Log {
     }
     $script:LogFullPath = $LogPath + $LogName
 
-    Write-Verbose $script:LogFullPath
+    Write-Verbose "Log file is located at : $script:LogFullPath"
 
     if (!(Test-Path $script:LogFullPath)) {
         New-Item -Path $script:LogFullPath -Force
@@ -33,5 +33,6 @@ function New-log
     }
     $Timestamp = Set-Timestamp
     $Message = $Timestamp + "["+$type+"] ; " +$Message
+    Write-Verbose $Message
     Add-Content -Value $Message -Path $script:LogFullPath
 }
