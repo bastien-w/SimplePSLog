@@ -1,8 +1,12 @@
 # SimplePSLog
  
 This module is made to create a simple log system that is portable, easy to use and read.
-You can find example on how to use it in the TestSimplePSLog.ps1 script
-
+You can find example on how to use it in the TestSimplePSLog.ps1 script.
+To install the module use :
+```Powershell
+Install-Module SimplePSLog
+Import-Module SimplePSLog
+```
 ## Start-log
 The Start-log command is used to configure the location of the log and the filename. 
 
