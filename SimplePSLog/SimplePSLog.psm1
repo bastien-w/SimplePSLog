@@ -17,10 +17,7 @@ function Start-Log {
 
 function Set-Timestamp {
     param()
-    if ($PSCmdlet.ShouldProcess())
-    {
-        return Get-Date -Format "dd/MM/yyyy ; HH:mm:ss ; "
-    }
+    return Get-Date -Format "dd/MM/yyyy ; HH:mm:ss ; "
 }
 
 function New-log
