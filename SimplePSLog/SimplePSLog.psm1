@@ -1,4 +1,5 @@
 function Start-Log {
+    [CmdletBinding()]
     param (
         [string]$LogPath = "$env:ProgramData\Logs",
         [string]$LogName = "SimplePSLog.txt"
@@ -16,12 +17,14 @@ function Start-Log {
 }
 
 function Set-Timestamp {
+    [CmdletBinding()]
     param()
     return Get-Date -Format "dd/MM/yyyy ; HH:mm:ss ; "
 }
 
 function New-log
 {
+    [CmdletBinding()]
      param (
         [ValidateSet("Error","Warning","Information")]
         $Type,
