@@ -16,5 +16,4 @@ jobs:
           NUGET_KEY: ${{ secrets.NUGETAPIKEY }}
         shell: pwsh
         run: |
-          ./build.ps1 -Path /tmp/SimplePSLog
           Publish-Module -Path /tmp/SimplePSLog -NuGetApiKey $env:NUGET_KEY -Verbose
