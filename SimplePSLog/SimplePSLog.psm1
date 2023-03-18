@@ -1,5 +1,4 @@
 function Start-Log {
-    [CmdletBinding(SupportsShouldProcess)]
     param (
         [string]$LogPath = "$env:ProgramData\Logs",
         [string]$LogName = "SimplePSLog.txt"
@@ -17,7 +16,6 @@ function Start-Log {
 }
 
 function Set-Timestamp {
-    [CmdletBinding(SupportsShouldProcess)]
     param()
     if ($PSCmdlet.ShouldProcess())
     {
@@ -27,7 +25,6 @@ function Set-Timestamp {
 
 function New-log
 {
-    [CmdletBinding(SupportsShouldProcess)]
      param (
         [ValidateSet("Error","Warning","Information")]
         $Type,
