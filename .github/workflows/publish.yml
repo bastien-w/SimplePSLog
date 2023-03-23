@@ -2,7 +2,7 @@ name: Publish PowerShell Module
 
 on:
   release:
-    types: published
+    types: [published]
 
 jobs:
   publish-to-gallery:
