@@ -1,27 +1,58 @@
 # SimplePSLog
- 
-This module is made to create a simple log system that is portable, easy to use and read.
-You can find example on how to use it in the TestSimplePSLog.ps1 script.
-To install the module use :
-```Powershell
+
+SimplePSLog is a PowerShell module for creating and writing to log files.
+
+## Usage
+
+First, install and import the module:
+
+```powershell
 Install-Module SimplePSLog
 Import-Module SimplePSLog
 ```
-## Start-log
-The Start-log command is used to configure the location of the log and the filename. 
 
-| Parameters   | Description  | Type              | Default Value            |
-|:-------------|:-------------|:------------------|:-------------------------|
-| LogPath      | Log location | String            | "$env:ProgramData\Logs"  |
-| LogName      | Log filename | String            | "SimplePSLog.txt"        |
+Then, create a log file by calling the `Start-Log` function:
 
-## New-log
-The New-log command is used to write log in the file configured by Start-log. 
+```powershell
+Start-Log -LogPath "C:\Logs" -LogName "MyLog.txt"
+```
 
-| Parameters   | Description                  | Type              | Default Value            | 
-|:-------------|:-----------------------------|:------------------|:-------------------------|
-| Type         | Type of the log              | ValidateSet       | None                     |
-| Message      | Message that will be written | String            | None                     |
+This will create a log file at `C:\Logs\MyLog.txt`.
 
-## New-Timestamp
-The New-Timestamp command is an utility function used by New-log to generate date in the format "dd/MM/yyyy ; HH:mm:ss ; "
+To write messages to the log file, use the `New-Log` function:
+
+```powershell
+New-Log -Type Information -Message "This is an informational message"
+New-Log -Type Warning -Message "This is a warning message"
+New-Log -Type Error -Message "This is an error message"
+```
+
+This will write messages to the log file with a timestamp and message type.
+
+## Functions
+
+### Start-Log
+
+The `Start-Log` function creates a log file with the specified path and name.
+
+```powershell
+Start-Log [-LogPath <string>] [-LogName <string>]
+```
+
+#### Parameters
+
+- `-LogPath`: The path where the log file will be created. Defaults to `$env:ProgramData\Logs`.
+- `-LogName`: The name of the log file. Defaults to `SimplePSLog.txt`.
+
+### New-Log
+
+The `New-Log` function writes messages to the log file with a timestamp and message type.
+
+```powershell
+New-Log [-Type <string>] [-Message <string>]
+```
+
+#### Parameters
+
+- `-Type`: The type of the message. Must be one of `Error`, `Warning`, or `Information`.
+- `-Message`: The message to write to the log file.
