@@ -4,15 +4,16 @@ function Start-Log {
         [string]$LogPath = "$env:ProgramData\Logs",
         [string]$LogName = "SimplePSLog.txt"
     )
-    if ($LogPath[-1] -ne  "\") {
-        $LogPath = $LogPath + "\"
-    }
-    $script:LogFullPath = $LogPath + $LogName
+    $script:LogFullPath = Join-Path $LogPath $LogName
 
     Write-Verbose "Log file is located at : $script:LogFullPath"
 
     if (!(Test-Path $script:LogFullPath)) {
-        New-Item -Path $script:LogFullPath -Force
+        try {
+            New-Item -Path $script:LogFullPath -Force
+        } catch {
+            Write-Error "Failed to create log file: $_"
+        }
     }
 }
 
@@ -37,5 +38,9 @@ function New-log
     $Timestamp = Set-Timestamp
     $Message = $Timestamp + "["+$type+"] ; " +$Message
     Write-Verbose $Message
-    Add-Content -Value $Message -Path $script:LogFullPath
+    try {
+        Add-Content -Value $Message -Path $script:LogFullPath
+    } catch {
+        Write-Error "Failed to write to log file: $_"
+    }
 }
