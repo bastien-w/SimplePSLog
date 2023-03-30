@@ -1,3 +1,4 @@
+# This function creates a log file with the specified path and name
 function Start-Log {
     [CmdletBinding()]
     param (
@@ -8,6 +9,7 @@ function Start-Log {
 
     Write-Verbose "Log file is located at : $script:LogFullPath"
 
+    # If the log file does not exist, create it
     if (!(Test-Path $script:LogFullPath)) {
         try {
             New-Item -Path $script:LogFullPath -Force
@@ -17,12 +19,14 @@ function Start-Log {
     }
 }
 
+# This function returns a timestamp in the format "dd/MM/yyyy ; HH:mm:ss ; "
 function Set-Timestamp {
     [CmdletBinding()]
     param()
     return Get-Date -Format "dd/MM/yyyy ; HH:mm:ss ; "
 }
 
+# This function writes messages to the log file with a timestamp and message type (Error, Warning, or Information)
 function New-log
 {
     [CmdletBinding()]
@@ -31,8 +35,9 @@ function New-log
         $Type,
         [string]$Message
     )
+    # Check if the log file has been created
     if (!($script:LogFullPath)) {
-        Write-Verbose 'Run the Start-Log command before generating logs'
+        Write-Error 'Run the Start-Log command before generating logs'
         exit
     }
     $Timestamp = Set-Timestamp
