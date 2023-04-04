@@ -2,8 +2,8 @@
 function Start-Log {
     [CmdletBinding()]
     param (
-        [string]$LogPath = "$env:ProgramData\Logs",
-        [string]$LogName = "SimplePSLog.txt"
+        [ValidateNotNullOrEmpty()][string]$LogPath = "$env:ProgramData\Logs",
+        [ValidateNotNullOrEmpty()][string]$LogName = "SimplePSLog.txt"
     )
     $script:LogFullPath = Join-Path $LogPath $LogName
 
@@ -33,7 +33,7 @@ function New-log
      param (
         [ValidateSet("Error","Warning","Information")]
         $Type,
-        [string]$Message
+        [string]$Message = 'Information'
     )
     # Check if the log file has been created
     if (!($script:LogFullPath)) {
