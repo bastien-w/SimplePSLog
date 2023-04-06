@@ -71,7 +71,8 @@ function Set-Timestamp {
     New-Log -Type "Error" -Message "An error has occurred"
 
     This example writes an error message to the log file with a timestamp.
-#>function New-log
+#>
+function New-log
 {
     [CmdletBinding()]
      param (

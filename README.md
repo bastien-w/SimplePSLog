@@ -54,5 +54,5 @@ New-Log [-Type <string>] [-Message <string>]
 
 #### Parameters
 
-- `-Type`: The type of the message. Must be one of `Error`, `Warning`, or `Information`.
+- `-Type`: The type of the message. Must be one of `Error`, `Warning`, or `Information`. Defaults to `Information`
 - `-Message`: The message to write to the log file.
