@@ -22,18 +22,25 @@ function Start-Log {
         [ValidateNotNullOrEmpty()][string]$LogPath = "$env:ProgramData\Logs",
         [ValidateNotNullOrEmpty()][string]$LogName = "SimplePSLog.txt"
     )
+    Write-Verbose "Generating the fullpath of the file"
     $script:LogFullPath = Join-Path $LogPath $LogName
 
-    Write-Verbose "Log file is located at : $script:LogFullPath"
-
-    # If the log file does not exist, create it
     if (!(Test-Path $script:LogFullPath)) {
         try {
+            Write-Verbose "Triyng to create $script:LogFullPath"
             New-Item -Path $script:LogFullPath -Force
+
+            Write-Verbose "Writing creation timestamp inside $script:LogFullPath"
+            New-log -Type Information -Message "This file as been created"
+
         } catch {
             Write-Error "Failed to create log file: $_"
         }
+    } else 
+    {
+        Write-Verbose "$script:LogFullPath already exist"
     }
+    Write-Output -InputObject "File located at $script:LogFullPath"
 }
 
 <#
@@ -80,16 +87,23 @@ function New-log
         $Type,
         [string]$Message = 'Information'
     )
-    # Check if the log file has been created
+
+    Write-Verbose "Checking if $script:LogFullPath exist"
     if (!($script:LogFullPath)) {
         Write-Error 'Run the Start-Log command before generating logs'
         exit
     }
+    
+    Write-Verbose "Generating timestamp"
     $Timestamp = Set-Timestamp
+
+    Write-Verbose "Generating message"
     $Message = $Timestamp + "["+$type+"] ; " +$Message
-    Write-Verbose $Message
+    
     try {
+        Write-Verbose "Adding the message to log file"
         Add-Content -Value $Message -Path $script:LogFullPath
+        Write-Output $Message
     } catch {
         Write-Error "Failed to write to log file: $_"
     }
