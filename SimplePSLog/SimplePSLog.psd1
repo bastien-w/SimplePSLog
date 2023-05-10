@@ -12,7 +12,7 @@
 RootModule = 'SimplePSLog.psm1'
 
 # Numéro de version de ce module.
-ModuleVersion = '1.3'
+ModuleVersion = '1.4'
 
 # Éditions PS prises en charge
 # CompatiblePSEditions = @()
