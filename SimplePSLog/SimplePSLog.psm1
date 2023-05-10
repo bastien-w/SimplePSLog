@@ -36,7 +36,7 @@ function Start-Log {
         } catch {
             Write-Error "Failed to create log file: $_"
         }
-    } else 
+    } else
     {
         Write-Verbose "$script:LogFullPath already exist"
     }
@@ -93,13 +93,13 @@ function New-log
         Write-Error 'Run the Start-Log command before generating logs'
         exit
     }
-    
+
     Write-Verbose "Generating timestamp"
     $Timestamp = Set-Timestamp
 
     Write-Verbose "Generating message"
     $Message = $Timestamp + "["+$type+"] ; " +$Message
-    
+
     try {
         Write-Verbose "Adding the message to log file"
         Add-Content -Value $Message -Path $script:LogFullPath
