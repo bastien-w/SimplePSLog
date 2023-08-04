@@ -12,7 +12,7 @@
 RootModule = 'SimplePSLog.psm1'
 
 # Numéro de version de ce module.
-ModuleVersion = '1.4'
+ModuleVersion = '1.5'
 
 # Éditions PS prises en charge
 # CompatiblePSEditions = @()
@@ -69,7 +69,7 @@ Description = 'Module to generate log'
 # NestedModules = @()
 
 # Fonctions à exporter à partir de ce module. Pour de meilleures performances, n’utilisez pas de caractères génériques et ne supprimez pas l’entrée. Utilisez un tableau vide si vous n’avez aucune fonction à exporter.
-FunctionsToExport = 'Start-Log', 'New-Log', 'Set-TimeStamp'
+FunctionsToExport = 'Start-Log', 'New-Log', 'Set-TimeStamp', 'Stop-Log'
 
 # Applets de commande à exporter à partir de ce module. Pour de meilleures performances, n’utilisez pas de caractères génériques et ne supprimez pas l’entrée. Utilisez un tableau vide si vous n’avez aucune applet de commande à exporter.
 CmdletsToExport = @()
