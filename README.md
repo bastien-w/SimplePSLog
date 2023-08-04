@@ -58,3 +58,13 @@ New-Log [-Type <string>] [-Message <string>]
 
 - `-Type`: The type of the message. Must be one of `Error`, `Warning`, or `Information`. Defaults to `Information`
 - `-Message`: The message to write to the log file.
+
+### Stop-Log
+
+The `Stop-Log` function closes the log file and completes the logging process.
+This function does not take any parameters.
+
+```powershell
+Stop-Log
+```
+After calling `Stop-Log`, the log file will be closed, and the logging process will be completed. It is recommended to call this function at the end of your script or when you no longer need to write to the log file.
