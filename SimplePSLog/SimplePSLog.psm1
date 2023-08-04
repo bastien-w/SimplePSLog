@@ -108,3 +108,27 @@ function New-log
         Write-Error "Failed to write to log file: $_"
     }
 }
+
+<#
+.SYNOPSIS
+    This function closes the log file and completes the logging process.
+
+.DESCRIPTION
+    The Stop-Log function closes the log file and completes the logging process. It can be used to finalize the log file and prevent further writing.
+
+.EXAMPLE
+    Stop-Log
+
+    This example stops the logging process and closes the log file.
+#>
+function Stop-Log {
+    [CmdletBinding()]
+    param()
+    
+    Write-Verbose "Closing the log file"
+    try {
+        $script:LogFullPath = $null
+    } catch {
+        Write-Error "Failed to close the log file: $_"
+    }
+}
