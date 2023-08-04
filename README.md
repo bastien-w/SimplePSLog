@@ -2,6 +2,8 @@
 
 SimplePSLog is a PowerShell module for creating and writing to log files.
 
+[Available on the PSGallery](https://www.powershellgallery.com/packages/SimplePSLog/)
+
 ## Usage
 
 First, install and import the module:
